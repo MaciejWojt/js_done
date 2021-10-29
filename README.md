@@ -1,2 +1,2 @@
 # js_done
-Wykonane zadania z zestawu js
+Wykonane zadań z zestawu js
