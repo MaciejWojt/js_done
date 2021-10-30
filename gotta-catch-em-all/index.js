@@ -19,7 +19,6 @@ function renderPokemons(pokemons) {
     pokemonsContainer.append(div)
 
   }
-  
 }
 
 // następnie wykonaj uzupełnioną metodę z tablicą pokemons, aby sprawdzić czy wszystko działa
@@ -37,74 +36,14 @@ function filterPokemons(pokemons) {
   // zwróć odfiltrowaną tablicę pokemonów
   let table = []
   let filterName = pokemon_name.value
+  filterName = filterName.charAt(0).toUpperCase() + filterName.slice(1).toLowerCase()
+  let pokemonTypes = ["grass","poison","fire","flying","bug","water","normal","ground","electric","fairy","fighting","psychic","rock","steal","ice","ghost","dragon"]
   for(const i of pokemons){
-    if (grass.checked&&i.types.includes("grass")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (poison.checked&&i.types.includes("poison")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (fire.checked&&i.types.includes("fire")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (flying.checked&&i.types.includes("flying")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (bug.checked&&i.types.includes("bug")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (water.checked&&i.types.includes("water")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (normal.checked&&i.types.includes("normal")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (ground.checked&&i.types.includes("ground")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (electric.checked&&i.types.includes("electric")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (fairy.checked&&i.types.includes("fairy")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (fighting.checked&&i.types.includes("fighting")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (psychic.checked&&i.types.includes("psychic")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (rock.checked&&i.types.includes("rock")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (steal.checked&&i.types.includes("steal")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (ice.checked&&i.types.includes("ice")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (ghost.checked&&i.types.includes("ghost")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
-    }
-    if (dragon.checked&&i.types.includes("dragon")&&i.name.includes(filterName)){ 
-      table.push(i)
-      continue
+    for(const type of pokemonTypes){
+      if (document.getElementById(type).checked&&i.types.includes(type)&&i.name.includes(filterName)){ 
+        table.push(i)
+        break
+      }
     }
   }
   return table
