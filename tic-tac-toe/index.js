@@ -16,7 +16,9 @@ board.addEventListener("click", ({ target }) => {
 
   displayTurn(turn);
 
-  checkWin();
+  if (checkWin()==1){
+    window.location.reload(true);
+  }
 });
 
 function displayTurn(turn) {
@@ -28,23 +30,25 @@ function displayTurn(turn) {
     document.getElementsByClassName("turn")[0].innerHTML = "X turn"
   }
 }
-
+let winwin = (a,znak)=>{
+  if((a[0]==znak&&a[1]==znak&&a[2]==znak) || (a[3]==znak&&a[4]==znak&&a[5]==znak) || (a[6]==znak&&a[7]==znak&&a[8]==znak) || (a[0]==znak&&a[3]==znak&&a[6]==znak) || (a[1]==znak&&a[4]==znak&&a[7]==znak) || (a[2]==znak&&a[5]==znak&&a[8]==znak) || (a[0]==znak&&a[4]==znak&&a[8]==znak) || (a[2]==znak&&a[4]==znak&&a[6]==znak)){
+    return true
+  }
+}
 function checkWin() {
   // 2. sprawdź czy któryś z graczy wygrał pojedynek - jeśli tak wyświetla komunikat (możesz użyć np. funkcji "alert(...)")
-  let p1 = document.querySelectorAll(".tile")[0].classList[1]
-  let p2 = document.querySelectorAll(".tile")[1].classList[1]
-  let p3 = document.querySelectorAll(".tile")[2].classList[1]
-  let p4 = document.querySelectorAll(".tile")[3].classList[1]
-  let p5 = document.querySelectorAll(".tile")[4].classList[1]
-  let p6 = document.querySelectorAll(".tile")[5].classList[1]
-  let p7 = document.querySelectorAll(".tile")[6].classList[1]
-  let p8 = document.querySelectorAll(".tile")[7].classList[1]
-  let p9 = document.querySelectorAll(".tile")[8].classList[1]
-  if(((p1=="tile-x"&&p2=="tile-x"&&p3=="tile-x")) || (p4=="tile-x"&&p5=="tile-x"&&p6=="tile-x") || (p7=="tile-x"&&p8=="tile-x"&&p9=="tile-x") || (p1=="tile-x"&&p4=="tile-x"&&p7=="tile-x") || (p2=="tile-x"&&p5=="tile-x"&&p8=="tile-x") || (p3=="tile-x"&&p6=="tile-x"&&p9=="tile-x") || (p1=="tile-x"&&p5=="tile-x"&&p9=="tile-x") || (p3=="tile-x"&&p5=="tile-x"&&p7=="tile-x")){
-    alert("X won")
+  
+  let tiles = []
+  for(let i=0;i<9;i++){
+    tiles.push(document.querySelectorAll(".tile")[i].classList[1])
   }
-  if((p1=="tile-o"&&p2=="tile-o"&&p3=="tile-o") || (p4=="tile-o"&&p5=="tile-o"&&p6=="tile-o") || (p7=="tile-o"&&p8=="tile-o"&&p9=="tile-o") || (p1=="tile-o"&&p4=="tile-o"&&p7=="tile-o") || (p2=="tile-o"&&p5=="tile-o"&&p8=="tile-o") || (p3=="tile-o"&&p6=="tile-o"&&p9=="tile-o") || (p1=="tile-o"&&p5=="tile-o"&&p9=="tile-o") || (p3=="tile-o"&&p5=="tile-o"&&p7=="tile-o")){
-    alert("O won")
+  if(winwin(tiles,"tile-x")){
+    alert("x won")
+    return 1
+  }
+  if(winwin(tiles,"tile-o")){
+    alert("o won")
+    return 1
   }
   
 }
